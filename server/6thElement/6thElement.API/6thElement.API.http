@@ -1,0 +1,6 @@
+@_6thElement.API_HostAddress = http://localhost:5141
+
+GET {{_6thElement.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
