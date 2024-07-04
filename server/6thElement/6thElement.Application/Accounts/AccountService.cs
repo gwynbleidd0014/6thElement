@@ -55,4 +55,9 @@ public class AccountService : IAccountsService
     {
         return (await _userManager.GetRolesAsync(model)).ToList();
     }
+
+    public async Task<UserResponseModel> GetUserById(string id)
+    {
+       return (await _userManager.FindByIdAsync(id)).Adapt<UserResponseModel>();
+    }
 }

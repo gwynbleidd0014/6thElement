@@ -1,8 +1,10 @@
 ﻿using _6thElement.API.infrastructure.JwtAuth;
 using _6thElement.Application.Accounts;
 using _6thElement.Application.Users;
+using _6thElement.Domain.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace _6thElement.API.Controllers
 {
@@ -33,6 +35,17 @@ namespace _6thElement.API.Controllers
         {
             return await _accountsService.CreateUserAsync(model);
         }
+
+        [Authorize]
+        [HttpGet]
+
+        public async Task<UserResponseModel> GetUserInfo()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            return await _accountsService.GetUserById(userId);
+        }
+
 
     }
 }
