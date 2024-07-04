@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>_6thElement.Infrastructure</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\6thElement.Application\6thElement.Application.csproj" />
+    <ProjectReference Include="..\6thElement.Domain\6thElement.Domain.csproj" />
+    <ProjectReference Include="..\6thElement.Persistance\6thElement.Persistance.csproj" />
+  </ItemGroup>
+
+</Project>

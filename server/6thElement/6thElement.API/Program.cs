@@ -1,16 +1,19 @@
 using _6thElement.API.infrastructure.ConfigureMiddlewares;
 using _6thElement.API.infrastructure.ConfigureServices;
+using _6thElement.API.infrastructure.Seeding;
 using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        }); 
 builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddServices(builder.Configuration);
-builder.Services.AddAuthorization();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddSwaggerGen(opts =>
@@ -40,12 +43,15 @@ builder.Services.AddSwaggerGen(opts =>
 
 });
 
+builder.Services.AddServices(builder.Configuration);
+
 
 var app = builder.Build();
 
+app.Services.Seed();
+
 app.UseMiddlewares();
 
-app.UseAuthentication();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -56,7 +62,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
