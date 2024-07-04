@@ -15,7 +15,7 @@ namespace _6thElement.API.Controllers
             _service = service;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("checkAnswer/{id}")]
         public async Task<bool> CheckAnswerAsync(int id, CancellationToken cancellationToken)
         { 
             return await _service.IsCorrectAsync(id, cancellationToken);
