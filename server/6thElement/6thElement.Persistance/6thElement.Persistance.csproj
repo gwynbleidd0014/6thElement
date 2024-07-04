@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\6thElement.Domain\6thElement.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
