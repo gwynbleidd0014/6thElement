@@ -1,3 +1,4 @@
+using _6thElement.API.infrastructure.ConfigureMiddlewares;
 using _6thElement.API.infrastructure.ConfigureServices;
 using Microsoft.OpenApi.Models;
 
@@ -6,11 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddServices(builder.Configuration);
-
+builder.Services.AddAuthorization();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(opts =>
 {
     opts.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -40,6 +42,8 @@ builder.Services.AddSwaggerGen(opts =>
 
 
 var app = builder.Build();
+
+app.UseMiddlewares();
 
 app.UseAuthentication();
 
