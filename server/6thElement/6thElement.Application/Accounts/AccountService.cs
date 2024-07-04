@@ -11,6 +11,7 @@ public class AccountService : IAccountsService
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
 
+
     public AccountService(UserManager<User> userManager, SignInManager<User> signInManager)
     {
         _userManager = userManager;
@@ -21,6 +22,7 @@ public class AccountService : IAccountsService
     {
         var user = await _userManager.FindByEmailAsync(model.Email) ?? throw new Exception("User Not Found");
         var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
+        
         if (result.Succeeded)
         {
             return user;
@@ -41,8 +43,16 @@ public class AccountService : IAccountsService
         var result = await _userManager.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
+        {
+            await _userManager.AddToRoleAsync(user, "User");
             return true;
+        }
 
         return false;
+    }
+
+    public async Task<List<string>> GetUserRoles(User model)
+    {
+        return (await _userManager.GetRolesAsync(model)).ToList();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -9,26 +8,25 @@ public static class ConfigureJwtAuthentification
 {
     public static void AddJwtAuthentification(this IServiceCollection services, IConfiguration config)
     {
-        var jwtConfig = new JwtConfig();
-        config.GetSection("JwtConfig").Bind(jwtConfig);
-        services.AddAuthentication(opts =>
+        services.AddAuthentication(options =>
         {
-            opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
         })
             .AddJwtBearer(opts =>
             {
+                opts.IncludeErrorDetails = true;
                 opts.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = jwtConfig.Issuer,
+                    ValidIssuer = config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Issuer)}"],
                     ValidateAudience = true,
-                    ValidAudience = jwtConfig.Audiance,
+                    ValidAudience = config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Audiance)}"],
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.Key)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Key)}"])),
                     ValidateLifetime = true,
                 };
-
             });
     }
 

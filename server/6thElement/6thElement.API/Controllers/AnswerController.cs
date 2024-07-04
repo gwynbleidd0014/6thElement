@@ -1,4 +1,6 @@
 ﻿using _6thElement.Application.Answers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +17,7 @@ namespace _6thElement.API.Controllers
             _service = service;
         }
 
+        [Authorize(Roles = "User")]
         [HttpGet("checkAnswer/{id}")]
         public async Task<bool> CheckAnswerAsync(int id, CancellationToken cancellationToken)
         { 

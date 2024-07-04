@@ -2,7 +2,6 @@
 
 namespace _6thElement.Domain.Users;
 
-public class User : IdentityUser<int>
+public class Role : IdentityRole<int>
 {
-    public int Age { get; set; }
 }

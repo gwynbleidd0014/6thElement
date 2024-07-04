@@ -8,26 +8,28 @@ namespace _6thElement.API.infrastructure.JwtAuth;
 
 public class JwtHelper
 {
-    public static string GenerateToken(User model, IConfiguration config)
+    public static string GenerateToken(User model, List<string> userRoles, IConfiguration config)
     {
-        var jwtConfig = new JwtConfig();
-        config.GetSection("JwtConfig").Bind(jwtConfig);
-
-
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.Key));
-        var issuer = jwtConfig.Issuer;
-        var audiance = jwtConfig.Audiance;
-        var expDate = DateTime.UtcNow.AddMinutes(jwtConfig.Exp);
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Key)}"]));
+        var issuer = config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Issuer)}"];
+        var audiance = config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Audiance)}"];
+        var expDate = DateTime.UtcNow.AddMinutes(30);
         var claims = new List<Claim> {
-           new(JwtRegisteredClaimNames.Sub, model.Id),
-           new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Sub, model.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
+            new Claim(ClaimTypes.Name, model.UserName),
+            new Claim(ClaimTypes.NameIdentifier, model.Id.ToString())
         };
 
-
+        foreach (var role in userRoles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
         var token = new JwtSecurityToken(
-            issuer: issuer,
-            audience: audiance,
-            claims: claims,
+            issuer,
+            audiance,
+            claims,
             expires: expDate,
             signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
             );
@@ -36,3 +38,4 @@ public class JwtHelper
         return tokenHandler.WriteToken(token);
     }
 }
+

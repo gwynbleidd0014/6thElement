@@ -23,8 +23,9 @@ namespace _6thElement.API.Controllers
         public async Task<IActionResult> Login(UserLoginModel model)
         {
             var user = await _accountsService.LoginUserAsync(model);
+            var roles = await _accountsService.GetUserRoles(user!);
 
-            return Ok(new { token = JwtHelper.GenerateToken(user, _configuration)});
+            return Ok(new { token = JwtHelper.GenerateToken(user, roles, _configuration)});
         }
 
         [HttpPost("register")]
