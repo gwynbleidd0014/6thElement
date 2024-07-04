@@ -1,48 +1,30 @@
 using _6thElement.API.infrastructure.ConfigureMiddlewares;
 using _6thElement.API.infrastructure.ConfigureServices;
+using _6thElement.API.infrastructure.JwtAuth;
 using _6thElement.API.infrastructure.Seeding;
-using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Full setup of serilog. We read log settings from appsettings.json
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .ReadFrom.Configuration(context.Configuration)
+    .ReadFrom.Services(services));
+
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-        }); 
-builder.Services.AddEndpointsApiExplorer();
+        });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-builder.Services.AddSwaggerGen(opts =>
-{
-    opts.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        In = ParameterLocation.Header,
-        Description = "Authorization for 6thElement"
-    });
-
-    opts.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                    },
-                    Array.Empty<string>()
-                }
-            });
-
-});
-
+builder.Services.AddConfiguredSwagger();
+builder.Services.AddDbContextAndIdentity(builder.Configuration);
+builder.Services.AddJwtAuthentification(builder.Configuration);
 builder.Services.AddServices(builder.Configuration);
 
 
@@ -61,7 +43,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

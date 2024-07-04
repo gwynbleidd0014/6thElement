@@ -9,11 +9,59 @@ using _6thElement.Infrastructure;
 using _6thElement.Persistance.DbContext;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace _6thElement.API.infrastructure.ConfigureServices;
 
 public static class ApiServices
 {
+
+    public static IServiceCollection AddDbContextAndIdentity(this IServiceCollection services, IConfiguration configuration, ServiceLifetime contextLifeTime = ServiceLifetime.Scoped)
+    {
+
+        services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection")), contextLifetime: contextLifeTime);
+        services.AddIdentity<User, Role>(opts =>
+        {
+            opts.Password.RequireDigit = true;
+        })
+           .AddRoles<Role>()
+           .AddEntityFrameworkStores<AppDbContext>();
+
+        return services;
+    }
+
+    public static void AddConfiguredSwagger(this IServiceCollection services)
+    {
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen(opts =>
+        {
+            opts.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                In = ParameterLocation.Header,
+                Description = "Authorization for Forum Api"
+            });
+
+            opts.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
+
+            opts.SwaggerDoc("v1", new OpenApiInfo() { Title = "Forum Api", Version = "1.0" });
+        });
+    }
+
     public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
     {
         #region Services
@@ -32,17 +80,8 @@ public static class ApiServices
         services.AddScoped<IAnswerService, AnswerService>();
         #endregion
         #region Database and Identity
-        services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-        services.AddIdentity<User, IdentityRole>(opts =>
-        {
-            opts.Password.RequireDigit = true;
-        })
-           .AddEntityFrameworkStores<AppDbContext>();
         #endregion
 
-        #region Jwt Authorization
-        services.AddJwtAuthentification(configuration);
-        #endregion
 
         return services;
     }

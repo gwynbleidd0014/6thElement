@@ -1,6 +1,9 @@
 ﻿using _6thElement.Domain;
+using _6thElement.Domain.Users;
 using _6thElement.Persistance.DbContext;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace _6thElement.API.infrastructure.Seeding
 {
@@ -11,11 +14,15 @@ namespace _6thElement.API.infrastructure.Seeding
             using var scope = provider.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
+
             Migrate(dbContext);
             SeedModules(dbContext);
             SeedChapters(dbContext);
             SeedQuestions(dbContext);
             SeedAnswers(dbContext);
+            SeedRoles(roleManager).GetAwaiter().GetResult();
 
         }
 
@@ -24,6 +31,15 @@ namespace _6thElement.API.infrastructure.Seeding
             context.Database.Migrate();
         }
 
+
+        public static async Task SeedRoles(RoleManager<Role> manager)
+        {
+            if ((await manager.FindByNameAsync("User")) == null)
+            {
+                await manager.CreateAsync(new Role { Name = "User" });
+            }
+
+        }
         public static void SeedModules(AppDbContext context)
         {
             var modules = new List<Module>()
@@ -51,6 +67,11 @@ namespace _6thElement.API.infrastructure.Seeding
         {
             var chapters = new List<Chapter>()
             {
+                new Chapter { ModuleId = 1, Order = 0},
+                new Chapter { ModuleId = 1, Order = 1},
+                new Chapter { ModuleId = 1, Order = 2},
+                new Chapter { ModuleId = 1, Order = 3},
+                new Chapter { ModuleId = 1, Order = 4},
                 new Chapter { ModuleId = 2, Order = 0},
                 new Chapter { ModuleId = 2, Order = 1},
                 new Chapter { ModuleId = 2, Order = 2},
@@ -60,12 +81,7 @@ namespace _6thElement.API.infrastructure.Seeding
                 new Chapter { ModuleId = 3, Order = 1},
                 new Chapter { ModuleId = 3, Order = 2},
                 new Chapter { ModuleId = 3, Order = 3},
-                new Chapter { ModuleId = 3, Order = 4},
-                new Chapter { ModuleId = 4, Order = 0},
-                new Chapter { ModuleId = 4, Order = 1},
-                new Chapter { ModuleId = 4, Order = 2},
-                new Chapter { ModuleId = 4, Order = 3},
-                new Chapter { ModuleId = 4, Order = 4}
+                new Chapter { ModuleId = 3, Order = 4}
             };
 
             foreach (var chapter in chapters)
