@@ -13,7 +13,7 @@ public class JwtHelper
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Key)}"]));
         var issuer = config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Issuer)}"];
         var audiance = config[$"{nameof(JwtConfig)}:{nameof(JwtConfig.Audiance)}"];
-        var expDate = DateTime.UtcNow.AddMinutes(30);
+        var expDate = DateTime.UtcNow.AddMinutes(120);
         var claims = new List<Claim> {
             new Claim(JwtRegisteredClaimNames.Sub, model.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
