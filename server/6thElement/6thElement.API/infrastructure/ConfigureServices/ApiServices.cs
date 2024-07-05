@@ -18,8 +18,7 @@ public static class ApiServices
 
     public static IServiceCollection AddDbContextAndIdentity(this IServiceCollection services, IConfiguration configuration, ServiceLifetime contextLifeTime = ServiceLifetime.Scoped)
     {
-        var s = configuration.GetConnectionString("Local");
-        services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("Local")), contextLifetime: contextLifeTime);
+        services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection")), contextLifetime: contextLifeTime);
         services.AddIdentity<User, Role>(opts =>
         {
             opts.Password.RequireDigit = true;
