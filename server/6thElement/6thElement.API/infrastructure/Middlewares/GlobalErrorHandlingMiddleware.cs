@@ -22,6 +22,7 @@ public class GlobalErrorHandlingMiddleware
         {
             var problem = new GlobalErrorHandler(httpContext, ex);
             httpContext.Response.Clear();
+            httpContext.Response.StatusCode = 500;
             await httpContext.Response.WriteAsJsonAsync(problem);
         }
     }
