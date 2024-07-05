@@ -6,6 +6,7 @@ import nft2 from "../../../public/assets/nft/nft2.PNG";
 import nft3 from "../../../public/assets/nft/nft3.PNG";
 import nft4 from "../../../public/assets/nft/nft4.PNG";
 import nft5 from "../../../public/assets/nft/nft5.PNG";
+import coin from '../../../public/assets/icons/coin.svg'
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Modal from "@/components/UI/Modal";
