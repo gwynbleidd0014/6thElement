@@ -3,7 +3,6 @@ using _6thElement.API.infrastructure.ConfigureServices;
 using _6thElement.API.infrastructure.JwtAuth;
 using _6thElement.API.infrastructure.Seeding;
 using Serilog;
-using System.Text.Json.Serialization;
 
 
 try
@@ -51,8 +50,7 @@ try
     app.UseConfiguredStaticFiles(builder.Environment, builder.Configuration);
     app.MapControllers();
 
-    app.Run();
-
+    app.Run("http://0.0.0.0:8080");
 }
 
 catch (Exception ex)
