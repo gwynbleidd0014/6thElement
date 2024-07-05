@@ -42,12 +42,12 @@ try
         app.UseSwaggerUI();
     }
 
-    app.UseConfiguredStaticFiles(builder.Environment, builder.Configuration);
+
 
     app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();
-
+    app.UseConfiguredStaticFiles(builder.Environment, builder.Configuration);
     app.MapControllers();
 
     app.Run();

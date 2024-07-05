@@ -21,7 +21,7 @@ namespace _6thElement.API.infrastructure.Seeding
             Migrate(dbContext);
             SeedModules(dbContext, config);
             SeedChapters(dbContext);
-            SeedQuestions(dbContext);
+            SeedQuestions(dbContext, config);
             SeedAnswers(dbContext);
             SeedRoles(roleManager).GetAwaiter().GetResult();
 
@@ -98,29 +98,29 @@ namespace _6thElement.API.infrastructure.Seeding
             context.SaveChanges();
         }
 
-        public static void SeedQuestions(AppDbContext context)
+        public static void SeedQuestions(AppDbContext context, IConfiguration config)
         {
             var questions = new List<Question>()
             {
-                new Question { Description = "რა არის ბლოქჩეინი?", ChapterId = 1},
-                new Question { Description = "ბლოქჩეინში ინფორმაცია ინახება:", ChapterId = 1},
-                new Question { Description = "რას ინახავს ბლოკი?", ChapterId = 1},
+                new Question { Description = "რა არის ბლოქჩეინი?", ChapterId = 1, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "ბლოქჩეინში ინფორმაცია ინახება:", ChapterId = 1, ImagePath=$"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რას ინახავს ბლოკი?", ChapterId = 1, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
 
-                new Question { Description = "შესაძლებელია თუ არა ბლოქჩეინზე შენახული ინფორმაციის ცვლილება?", ChapterId = 2},
-                new Question { Description = "რას ნიშნავს „ორმაგი ხარჯვა“ ბლოქჩეინ ტექნოლოგიაში?", ChapterId = 2},
-                new Question { Description = "რისთვის გამოიყენება კონსესუსის მექანიზმები ბლოქჩეინ ტექნოლოგიაში?", ChapterId = 2},
+                new Question { Description = "შესაძლებელია თუ არა ბლოქჩეინზე შენახული ინფორმაციის ცვლილება?", ChapterId = 2, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რას ნიშნავს „ორმაგი ხარჯვა“ ბლოქჩეინ ტექნოლოგიაში?", ChapterId = 2, ImagePath=$"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რისთვის გამოიყენება კონსესუსის მექანიზმები ბლოქჩეინ ტექნოლოგიაში?", ChapterId = 2,ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
 
-                new Question { Description = "რა ხდის ბლოქჩეინს განსაკუთრებულს?", ChapterId = 3},
-                new Question { Description = "რას გულისხმობს დეცენტრალიზაცია ბიტკოინში?", ChapterId = 3},
-                new Question { Description = "რა არის სმარტ კონტრაქტი?", ChapterId = 3},
+                new Question { Description = "რა ხდის ბლოქჩეინს განსაკუთრებულს?", ChapterId = 3, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რას გულისხმობს დეცენტრალიზაცია ბიტკოინში?", ChapterId = 3, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა არის სმარტ კონტრაქტი?", ChapterId = 3, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
 
-                new Question { Description = "რომელი ბლოქჩეინი უზრუნველყოფს ტრანზაქციების სრულ გამჭვირვალობას?", ChapterId = 4},
-                new Question { Description = "რა განასხვავებს ბლოქჩეინს ტრადიციული ბაზისაგან?", ChapterId = 4},
-                new Question { Description = "რომელი პროგრამული ენა გამოიყენება სმარტ კონტრაქტისათვის ეთერიუმის ბაზაზე?", ChapterId = 4},
+                new Question { Description = "რომელი ბლოქჩეინი უზრუნველყოფს ტრანზაქციების სრულ გამჭვირვალობას?", ChapterId = 4, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რა განასხვავებს ბლოქჩეინს ტრადიციული ბაზისაგან?", ChapterId = 4, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რომელი პროგრამული ენა გამოიყენება სმარტ კონტრაქტისათვის ეთერიუმის ბაზაზე?", ChapterId = 4, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
 
-                new Question { Description = "კონსესუსის რომელ მექანიზმს სჭირდება ბევრი ელექტრო ენერგია?", ChapterId = 5},
-                new Question { Description = "რა არის დეცენტრალიზებული გადამცვლელების (DEX) ფუნქცია ბლოქჩეინ ეკოსისტემაში?", ChapterId = 5},
-                new Question { Description = "რა როლს თამაშობს ნოუდი ბლოქჩეინ ტექნონლოგიაში?", ChapterId = 5},
+                new Question { Description = "კონსესუსის რომელ მექანიზმს სჭირდება ბევრი ელექტრო ენერგია?", ChapterId = 5, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რა არის დეცენტრალიზებული გადამცვლელების (DEX) ფუნქცია ბლოქჩეინ ეკოსისტემაში?", ChapterId = 5, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა როლს თამაშობს ნოუდი ბლოქჩეინ ტექნონლოგიაში?", ChapterId = 5, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
             };
 
             foreach (var question in questions)
