@@ -6,8 +6,11 @@ using _6thElement.Application.Questions;
 using _6thElement.Domain.Users;
 using _6thElement.Infrastructure;
 using _6thElement.Persistance.DbContext;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace _6thElement.API.infrastructure.ConfigureServices;
 
@@ -26,6 +29,13 @@ public static class ApiServices
 
         return services;
     }
+
+    public static void AddCustomValidation(this IServiceCollection services)
+    {
+        services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+    }
+
 
     public static void AddConfiguredSwagger(this IServiceCollection services)
     {
