@@ -1,4 +1,5 @@
-﻿using _6thElement.Domain;
+﻿using _6thElement.Application.Exceptions;
+using _6thElement.Domain;
 using Mapster;
 
 namespace _6thElement.Application.Modules;
@@ -20,7 +21,7 @@ public class ModuleService : IModuleService
 
     public async Task<ModuleResponseModel> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
-        var module =  await _repo.GetByIdAsync(id, cancellationToken) ?? throw new Exception("Module with such id was not found");
+        var module =  await _repo.GetByIdAsync(id, cancellationToken) ?? throw new NotFound("Module with such id was not found");
         return module.Adapt<ModuleResponseModel>();
     }
 
