@@ -6,20 +6,32 @@ import learnIcon from "../../../public/assets/icons/learnIcon.svg";
 import simulateIcon from "../../../public/assets/icons/simulateIcon.svg";
 import marketPlaceIcon from "../../../public/assets/icons/marketplaceIcon.svg";
 import othersIcon from "../../../public/assets/icons/othersIcon.svg";
-import { usePathname } from "next/navigation";
+import coin from "../../../public/assets/icons/coin.svg";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import { logoutAction } from "@/lib/actions";
 
 const SideBar = () => {
   const [otherModal, setOtherModal] = useState(false);
   const pathName = usePathname();
+  const router = useRouter();
+
+  const logoutHandler = async () => {
+    await logoutAction();
+    router.refresh();
+  };
 
   return (
     <>
       <div className="fixed z-50 w-full xl:w-[300px] xl:h-full bottom-0 xl:bottom-auto border-t-2 xl:border-t-0 xl:border-r-2 bg-white xl:bg-transparent">
-        <div className="p-4 flex flex-row xl:flex-col items-center xl:items-start text-center xl:text-left">
+        <div className="p-4 flex flex-row xl:flex-col items-center xl:items-start text-center xl:text-left gap-4">
           <h1 className="text-[40px] font-bold text-[#1CB0F6] hidden xl:block">
             6th Element
           </h1>
+          <div className="text-[#1CB0F6] xl:flex items-center text-[20px] font-bold hidden">
+            <Image src={coin} alt="coin icon" className="w-10 h-10" />{" "}
+            <span>100</span>
+          </div>
           <div className="w-full pt-2 flex flex-row justify-around xl:flex-col gap-6">
             <Link
               href="/dashboard/learn"
@@ -79,7 +91,7 @@ const SideBar = () => {
                   <button className="bg-[#1CB0F6] rounded-lg p-2 text-black text-center">
                     Settings
                   </button>
-                  <button>Log out</button>
+                  <button onClick={logoutHandler}>Log out</button>
                 </div>
               )}
             </div>

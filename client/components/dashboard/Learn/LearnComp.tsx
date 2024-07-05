@@ -1,29 +1,10 @@
 "use client";
 
+import { ModuleData } from "@/types/module-types";
 import Image from "next/image";
-import cardImage from "../../../public/assets/images/card-image.png";
 import { useRouter } from "next/navigation";
 
-const moduleData = [
-  {
-    image: cardImage,
-    title: "Financing Basics",
-  },
-  {
-    image: cardImage,
-    title: "Cryptography Basics",
-  },
-  {
-    image: cardImage,
-    title: "NFT Basics",
-  },
-  {
-    image: cardImage,
-    title: "Financing Basics",
-  },
-];
-
-const LearnComp = () => {
+const LearnComp = ({ moduleData }: { moduleData: ModuleData[] }) => {
   const router = useRouter();
 
   const onModluleClickHandler = (index: number) => {
@@ -37,20 +18,22 @@ const LearnComp = () => {
           <h1 className="text-[40px] font-bold">Choose your module</h1>
         </div>
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
-          {moduleData.map((item, index) => (
+          {moduleData?.map((item) => (
             <div
-              key={index}
-              onClick={() => onModluleClickHandler(index)}
+              key={item.id}
+              onClick={() => onModluleClickHandler(item.id)}
               className="p-4 flex flex-col justify-between items-center w-full bg-white dark:bg-gray hover:shadow-lg transition-transform transform sm:hover:scale-105 cursor-pointer xl:mt-[150px]"
             >
               <Image
-                src={item.image}
-                alt="card image"
+                src={`http://192.168.0.20:5141${item.imagePath}`}
+                alt={item.name}
+                width={200}
+                height={200}
                 className="w-[200px] h-[200px] object-cover rounded-lg"
                 priority
               />
               <h2 className="p-2 text-[24px] font-bold text-center">
-                {item.title}
+                {item.name}
               </h2>
             </div>
           ))}
