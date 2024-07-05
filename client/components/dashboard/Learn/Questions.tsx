@@ -39,7 +39,7 @@ const Questions = ({
   };
 
   return (
-    <main className="p-8">
+    <main className="p-8 mb-28">
       <section>
         <div className="flex flex-col m-auto gap-4 max-w-[600px] xl:w-[600px] w-auto">
           <Image
