@@ -1,110 +1,111 @@
 "use client";
 
 import Image from "next/image";
-import learnIcon from "../../../public/assets/icons/learnIcon.svg";
-import simulateIcon from "../../../public/assets/icons/simulateIcon.svg";
-import marketPlaceIcon from "../../../public/assets/icons/marketplaceIcon.svg";
-import othersIcon from "../../../public/assets/icons/othersIcon.svg";
-import coin from "../../../public/assets/icons/coin.svg";
+import nft1 from "../../../public/assets/nft/nft1.png";
+import nft2 from "../../../public/assets/nft/nft2.png";
+import nft3 from "../../../public/assets/nft/nft3.png";
+import nft4 from "../../../public/assets/nft/nft4.png";
+import nft5 from "../../../public/assets/nft/nft5.png";
+import coin from '../../../public/assets/icons/coin.svg'
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Modal from "@/components/UI/Modal";
 
 const marketData = [
   {
-    image: learnIcon,
+    image: nft1,
     title: "TEGETA Sale 5%",
   },
   {
-    image: simulateIcon,
+    image: nft2,
     title: "Biblusi book",
   },
   {
-    image: marketPlaceIcon,
+    image: nft3,
     title: "MyAuto VIP 1mth",
   },
   {
-    image: othersIcon,
+    image: nft4,
     title: "MyHome VIP 1mth",
   },
   {
-    image: learnIcon,
+    image: nft5,
     title: "TEGETA Sale 5%",
   },
   {
-    image: simulateIcon,
+    image: nft2,
     title: "Biblusi book",
   },
   {
-    image: marketPlaceIcon,
+    image: nft3,
     title: "MyAuto VIP 1mth",
   },
   {
-    image: othersIcon,
+    image: nft4,
     title: "MyHome VIP 1mth",
   },
   {
-    image: learnIcon,
+    image: nft5,
     title: "TEGETA Sale 5%",
   },
   {
-    image: simulateIcon,
+    image: nft2,
     title: "Biblusi book",
   },
   {
-    image: marketPlaceIcon,
+    image: nft3,
     title: "MyAuto VIP 1mth",
   },
   {
-    image: othersIcon,
+    image: nft4,
     title: "MyHome VIP 1mth",
   },
   {
-    image: learnIcon,
+    image: nft5,
     title: "TEGETA Sale 5%",
   },
   {
-    image: simulateIcon,
+    image: nft2,
     title: "Biblusi book",
   },
   {
-    image: marketPlaceIcon,
+    image: nft3,
     title: "MyAuto VIP 1mth",
   },
   {
-    image: othersIcon,
+    image: nft4,
     title: "MyHome VIP 1mth",
   },
   {
-    image: learnIcon,
+    image: nft5,
     title: "TEGETA Sale 5%",
   },
   {
-    image: simulateIcon,
+    image: nft2,
     title: "Biblusi book",
   },
   {
-    image: marketPlaceIcon,
+    image: nft3,
     title: "MyAuto VIP 1mth",
   },
   {
-    image: othersIcon,
+    image: nft4,
     title: "MyHome VIP 1mth",
   },
   {
-    image: learnIcon,
+    image: nft5,
     title: "TEGETA Sale 5%",
   },
   {
-    image: simulateIcon,
+    image: nft2,
     title: "Biblusi book",
   },
   {
-    image: marketPlaceIcon,
+    image: nft3,
     title: "MyAuto VIP 1mth",
   },
   {
-    image: othersIcon,
+    image: nft4,
     title: "MyHome VIP 1mth",
   },
 ];
