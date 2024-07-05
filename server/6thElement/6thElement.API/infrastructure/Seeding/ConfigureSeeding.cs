@@ -16,9 +16,10 @@ namespace _6thElement.API.infrastructure.Seeding
 
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
+            var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
 
             Migrate(dbContext);
-            SeedModules(dbContext);
+            SeedModules(dbContext, config);
             SeedChapters(dbContext);
             SeedQuestions(dbContext);
             SeedAnswers(dbContext);
@@ -40,13 +41,13 @@ namespace _6thElement.API.infrastructure.Seeding
             }
 
         }
-        public static void SeedModules(AppDbContext context)
+        public static void SeedModules(AppDbContext context, IConfiguration config)
         {
             var modules = new List<Module>()
             {
-                new Module { Name = "Blockchain", Type = "Module"},
-                new Module { Name = "Cryptocurrency", Type = "Module"},
-                new Module { Name = "NFT", Type = "Module"},
+                new Module { Name = "Blockchain", Type = "Module", ImagePath=$"/{config["Constants:ResourcePath"]}/342cc13c-77ee-4bc4-8bd9-8eccf0aaa84a.png" },
+                new Module { Name = "Cryptocurrency", Type = "Module", ImagePath=$"/{config["Constants:ResourcePath"]}/256f7b68-ca99-4f8e-b03a-1d28b612719e.png"},
+                new Module { Name = "NFT", Type = "Module", ImagePath=$"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
             };
 
             foreach (var module in modules)
