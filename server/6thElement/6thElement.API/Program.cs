@@ -23,6 +23,7 @@ try
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
     builder.Services.AddConfiguredSwagger();
+    builder.Services.AddCustomValidation();
     builder.Services.AddDbContextAndIdentity(builder.Configuration);
     builder.Services.AddJwtAuthentification(builder.Configuration);
     builder.Services.AddServices(builder.Configuration);
