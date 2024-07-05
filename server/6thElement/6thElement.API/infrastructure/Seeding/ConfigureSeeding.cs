@@ -45,6 +45,7 @@ namespace _6thElement.API.infrastructure.Seeding
         {
             var modules = new List<Module>()
             {
+                new Module { Name = "Basic", Type = "Module", ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png" },
                 new Module { Name = "Blockchain", Type = "Module", ImagePath=$"/{config["Constants:ResourcePath"]}/342cc13c-77ee-4bc4-8bd9-8eccf0aaa84a.png" },
                 new Module { Name = "Cryptocurrency", Type = "Module", ImagePath=$"/{config["Constants:ResourcePath"]}/256f7b68-ca99-4f8e-b03a-1d28b612719e.png"},
                 new Module { Name = "NFT", Type = "Module", ImagePath=$"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
@@ -82,7 +83,12 @@ namespace _6thElement.API.infrastructure.Seeding
                 new Chapter { ModuleId = 3, Order = 1},
                 new Chapter { ModuleId = 3, Order = 2},
                 new Chapter { ModuleId = 3, Order = 3},
-                new Chapter { ModuleId = 3, Order = 4}
+                new Chapter { ModuleId = 3, Order = 4},
+                new Chapter { ModuleId = 4, Order = 0},
+                new Chapter { ModuleId = 4, Order = 1},
+                new Chapter { ModuleId = 4, Order = 2},
+                new Chapter { ModuleId = 4, Order = 3},
+                new Chapter { ModuleId = 4, Order = 4}
             };
 
             foreach (var chapter in chapters)

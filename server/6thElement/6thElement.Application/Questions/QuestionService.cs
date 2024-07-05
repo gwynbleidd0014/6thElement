@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using _6thElement.Application.Exceptions;
+using Mapster;
 
 namespace _6thElement.Application.Questions;
 
@@ -13,7 +14,7 @@ public class QuestionService : IQuestionService
 
     public async Task<QuestionResponseModel> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
-        var result = await _questionService.GetByIdAsync(id, cancellationToken) ?? throw new Exception("No such question");
+        var result = await _questionService.GetByIdAsync(id, cancellationToken) ?? throw new NotFound("Question with such id was not found");
 
         return result.Adapt<QuestionResponseModel>();
     }

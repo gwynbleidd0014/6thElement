@@ -1,4 +1,5 @@
 ﻿using _6thElement.Application.Answers;
+using _6thElement.Application.Exceptions;
 using _6thElement.Domain;
 using _6thElement.Persistance.DbContext;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ public class AnswerRepository : IAnswerRepository
 
     public async Task<bool> IsCorrectAsync(int id, CancellationToken cancellationToken)
     {
-        var answer = await _answer.SingleOrDefaultAsync(x => x.Id == id, cancellationToken) ?? throw new Exception("No Such answer");
+        var answer = await _answer.SingleOrDefaultAsync(x => x.Id == id, cancellationToken) ?? throw new NotFound("Answer With Such Id Was not found");
 
         return answer.IsCorrect;
 

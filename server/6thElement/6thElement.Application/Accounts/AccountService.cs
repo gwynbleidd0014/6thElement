@@ -1,4 +1,5 @@
-﻿using _6thElement.Application.Users;
+﻿using _6thElement.Application.Exceptions;
+using _6thElement.Application.Users;
 using _6thElement.Domain.Users;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +21,7 @@ public class AccountService : IAccountsService
 
     public async Task<User?> LoginUserAsync(UserLoginModel model)
     {
-        var user = await _userManager.FindByEmailAsync(model.Email) ?? throw new Exception("User Not Found");
+        var user = await _userManager.FindByEmailAsync(model.Email) ?? throw new NotFound("User With Such Credintials Was not found");
         var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
         
         if (result.Succeeded)
@@ -38,7 +39,7 @@ public class AccountService : IAccountsService
         var oldUser = await _userManager.FindByEmailAsync(model.Email);
 
         if (oldUser != null)
-            throw new Exception("User Already Exists");
+            throw new AlreadyExists("User With Such Email Already Exists");
 
         var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -58,6 +59,7 @@ public class AccountService : IAccountsService
 
     public async Task<UserResponseModel> GetUserById(string id)
     {
-       return (await _userManager.FindByIdAsync(id)).Adapt<UserResponseModel>();
+        var user = await _userManager.FindByIdAsync(id) ?? throw new NotFound("User With Such Credintials Was not found");
+       return user.Adapt<UserResponseModel>();
     }
 }

@@ -1,4 +1,5 @@
-﻿using _6thElement.Domain;
+﻿using _6thElement.Application.Exceptions;
+using _6thElement.Domain;
 using Mapster;
 
 namespace _6thElement.Application.Chapters;
@@ -15,7 +16,7 @@ public class ChapterService : IChapterService
 
     public async Task<ChapterResponseModel> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
-        var chapter = await _repo.GetByIdAsync(id, cancellationToken) ?? throw new Exception("No such Chapter");
+        var chapter = await _repo.GetByIdAsync(id, cancellationToken) ?? throw new NotFound("Chapter with such id was not found");
 
         return chapter.Adapt<ChapterResponseModel>();
     }
