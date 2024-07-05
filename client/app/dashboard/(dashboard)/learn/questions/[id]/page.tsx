@@ -1,4 +1,5 @@
 import Questions from "@/components/dashboard/Learn/Questions";
+import { getQuestions } from "@/lib/actions";
 
 interface ModuleRoad {
   params: {
@@ -6,6 +7,10 @@ interface ModuleRoad {
   };
 }
 
-export default function ModuleRoad({ params: { id } }: ModuleRoad) {
-  return <Questions />;
+export default async function ModuleRoad({ params: { id } }: ModuleRoad) {
+  const questions = await getQuestions(id);
+
+  return (
+    <Questions questions={questions.questions} modulId={questions.moduleId} />
+  );
 }
