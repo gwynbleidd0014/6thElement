@@ -69,26 +69,30 @@ namespace _6thElement.API.infrastructure.Seeding
         {
             var chapters = new List<Chapter>()
             {
-                new Chapter { ModuleId = 1, Order = 0},
-                new Chapter { ModuleId = 1, Order = 1},
-                new Chapter { ModuleId = 1, Order = 2},
-                new Chapter { ModuleId = 1, Order = 3},
-                new Chapter { ModuleId = 1, Order = 4},
                 new Chapter { ModuleId = 2, Order = 0},
                 new Chapter { ModuleId = 2, Order = 1},
                 new Chapter { ModuleId = 2, Order = 2},
                 new Chapter { ModuleId = 2, Order = 3},
                 new Chapter { ModuleId = 2, Order = 4},
+
                 new Chapter { ModuleId = 3, Order = 0},
                 new Chapter { ModuleId = 3, Order = 1},
                 new Chapter { ModuleId = 3, Order = 2},
                 new Chapter { ModuleId = 3, Order = 3},
                 new Chapter { ModuleId = 3, Order = 4},
+
                 new Chapter { ModuleId = 4, Order = 0},
                 new Chapter { ModuleId = 4, Order = 1},
                 new Chapter { ModuleId = 4, Order = 2},
                 new Chapter { ModuleId = 4, Order = 3},
-                new Chapter { ModuleId = 4, Order = 4}
+                new Chapter { ModuleId = 4, Order = 4},
+
+                new Chapter { ModuleId = 1, Order = 0},
+                new Chapter { ModuleId = 1, Order = 1},
+                new Chapter { ModuleId = 1, Order = 2},
+                new Chapter { ModuleId = 1, Order = 3},
+                new Chapter { ModuleId = 1, Order = 4},
+
             };
 
             foreach (var chapter in chapters)
@@ -127,6 +131,59 @@ namespace _6thElement.API.infrastructure.Seeding
                 new Question { Description = "კონსესუსის რომელ მექანიზმს სჭირდება ბევრი ელექტრო ენერგია?", ChapterId = 5, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
                 new Question { Description = "რა არის დეცენტრალიზებული გადამცვლელების (DEX) ფუნქცია ბლოქჩეინ ეკოსისტემაში?", ChapterId = 5, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
                 new Question { Description = "რა როლს თამაშობს ნოუდი ბლოქჩეინ ტექნონლოგიაში?", ChapterId = 5, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "ბლოქჩეინი და კრიპტოვალუტა სინონიმებია:", ChapterId = 6, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "ჯამში რამდენი ბიტკოინის იარსებებს?", ChapterId = 6, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რომელი ვირტუალური ვალუტაა ბლოქჩეინ ტექნოლოგიის პირველი მაგალითი?", ChapterId = 6, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "რა როლს თამაშობენ მაინერები ბიტკოინში?", ChapterId = 7, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რა არის პირადი გასაღები?", ChapterId = 7, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "კონსესუსის რომელ მექანიზმს იყენებს ბიტკოინი?", ChapterId = 7, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "კონსესუსის რომელ მექანიზმს იყენებს ეთერიუმი 2022 წლიდან?", ChapterId = 8, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რომელი კრიპტოვალუტა შექმნა სატოში ნაკამოტომ?", ChapterId = 8, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რომელმა კრიპტოვალუტამ დანერგა სმარტ კონტრაქცის ფუნქციონალი?", ChapterId = 8, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "Tether არის:", ChapterId = 9, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "სტაბილკოინი USDT:", ChapterId = 9, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა არის BINANCE?", ChapterId = 9, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "რეგულატორებს და კანონის აღმასრულებელ ორგანოებს არ შეუძლიათ ბიტკოინის ტრანზაქციებს ‘გაყვნენ’", ChapterId = 10, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "ბიტკოინის ფასი მომავალში მხოლოდ გაიზრდება, რადგანაც მხოლოდ 21 მილიონი ბიკტოინის დამაინერება მოხდება:", ChapterId = 10, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "კრიპტოვალუტა შეიძლება გამოყენებულ იქნეს გადახდებისათვის", ChapterId = 10, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "როგორ იშიფრება NFT?", ChapterId = 11, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "ყველა NFT აქვს მაღალი ღირებულება:", ChapterId = 11, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა განასხვავებს NFT-ს ბიტკოინისგან და ეთერიუმისგან?", ChapterId = 11, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "რომელი პლატფორმა არის პოპულარულის NFT-ების გამოსაცემად, სმარტ კონტრაქტებისა და დეცენტრალიზებული აპლიკაციების ქონის გამო?", ChapterId = 12, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "ეთერიუმის პლატფორმაზე NFT რომელი სტანდარტი გამოიყენება?", ChapterId = 12, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რას გულისხმობს ‘minting’ NFT კონტექსტში?", ChapterId = 12, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "როგორ შეიძლება გამოიყურებოდეს NFT?", ChapterId = 13, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "NFT შესანახად რომელი მეთოდი არის უსაფრთხო?", ChapterId = 13, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა არის OPENSEA?", ChapterId = 13, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "DAO არის:", ChapterId = 14, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რომელია ყველაზე ძვირადღირებული NFT", ChapterId = 14, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "NFT-ში ინვესტიცია", ChapterId = 14, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "ყველას შეუძლია NFT-ის გამოშვება?", ChapterId = 15, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "NFT-ის გაყიდვა", ChapterId = 15, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა განსაზღვრავს NFT ღირებულებას?", ChapterId = 15, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "რა არის ფული?:", ChapterId = 16, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "სად არის უკეთესი ფულის შენახვა? :", ChapterId = 16, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა არის დაზოგვა?", ChapterId = 16, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "რა არის ბიუჯეტი?", ChapterId = 17, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რას ნიშნავს პროცენტი?", ChapterId = 17, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა არის შემოსავალი?", ChapterId = 17, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
+                new Question { Description = "რა არის კრედიტი?", ChapterId = 18, ImagePath=$"/{config["Constants:ResourcePath"]}/9a6286e9-c2a1-4e90-9fc2-57f07fd7bcf2.png"},
+                new Question { Description = "რა არის ინფლაცია?", ChapterId = 18, ImagePath = $"/{config["Constants:ResourcePath"]}/151b8db7-9552-4217-adeb-c443feef9bbd.png"},
+                new Question { Description = "რა არის საფონდო ბირჟა?", ChapterId = 18, ImagePath=$"/{config["Constants:ResourcePath"]}/d3daf41a-de2f-4baf-9fae-aaa753bef1bf.png"},
+
             };
 
             foreach (var question in questions)
@@ -204,6 +261,162 @@ namespace _6thElement.API.infrastructure.Seeding
                 new Answer { Description = "ახალი ბლოკის მაინინგი", IsCorrect = false, QuestionId = 15},
                 new Answer { Description = "ტრანზაქციების ვალიდაცია", IsCorrect = true, QuestionId = 15},
                 new Answer { Description = "პირადი გასაღების გენერირება", IsCorrect = false, QuestionId = 15},
+
+                new Answer { Description = "სწორია", IsCorrect = false, QuestionId = 16},
+                new Answer { Description = "არასწორია", IsCorrect = true, QuestionId = 16},
+                new Answer { Description = "გააჩნია სიტუაციას", IsCorrect = false, QuestionId = 16},
+
+                new Answer { Description = "21 მილიონი", IsCorrect = true, QuestionId = 17},
+                new Answer { Description = "100 მილიონი", IsCorrect = false, QuestionId = 17},
+                new Answer { Description = "უსასრულო რაოდენობა", IsCorrect = false, QuestionId = 17},
+
+                new Answer { Description = "ლარი", IsCorrect = false, QuestionId = 18},
+                new Answer { Description = "ბიტკოინი", IsCorrect = true, QuestionId = 18},
+                new Answer { Description = "რიპლი", IsCorrect = false, QuestionId = 18},
+
+                new Answer { Description = "არეგულირებენ კრიპტოვალუტის ღირებულებას", IsCorrect = false, QuestionId = 19},
+                new Answer { Description = "არანაირი ფუნქცია არ აქვთ", IsCorrect = false, QuestionId = 19},
+                new Answer { Description = "ვერიფიცირებას უკეთებენ ტრანზაქციებს", IsCorrect = true, QuestionId = 19},
+
+                new Answer { Description = "სახლის გასაღები", IsCorrect = false, QuestionId = 20},
+                new Answer { Description = "გასაღები, რომელიც გამოიყენება კრიპტოვალუტის სამართავად", IsCorrect = false, QuestionId = 20},
+                new Answer { Description = "ბლოკში არსებული ინფორმაციის წაშლის საშუალება", IsCorrect = true, QuestionId = 20},
+
+                new Answer { Description = "PoW", IsCorrect = true, QuestionId = 21},
+                new Answer { Description = "PoS", IsCorrect = false, QuestionId = 21},
+                new Answer { Description = "DPo", IsCorrect = false, QuestionId = 21},
+
+                new Answer { Description = "PoW", IsCorrect = false, QuestionId = 22},
+                new Answer { Description = "PoS", IsCorrect = true, QuestionId = 22},
+                new Answer { Description = "DPo", IsCorrect = false, QuestionId = 22},
+
+                new Answer { Description = "ლარი", IsCorrect = false, QuestionId = 23},
+                new Answer { Description = "ბიტკოინი", IsCorrect = true, QuestionId = 23},
+                new Answer { Description = "რიპლი", IsCorrect = false, QuestionId = 23},
+
+                new Answer { Description = "ლაითქოინი", IsCorrect = false, QuestionId = 24},
+                new Answer { Description = "რიპლი", IsCorrect = false, QuestionId = 24},
+                new Answer { Description = "ეთერიუმი", IsCorrect = true, QuestionId = 24},
+
+                new Answer { Description = "ბიკტოინის ნაირსახეობა", IsCorrect = false, QuestionId = 25},
+                new Answer { Description = "სტაბილკოინი", IsCorrect = true, QuestionId = 25},
+                new Answer { Description = "სმარტ კონტრაქტის სახეობა", IsCorrect = false, QuestionId = 25},
+
+                new Answer { Description = "მიბულია FIAT-ზე", IsCorrect = true, QuestionId = 26},
+                new Answer { Description = "მიბმულია ოქროს ღირებულებაზე", IsCorrect = false, QuestionId = 26},
+                new Answer { Description = "არაფერზეა მიბმული", IsCorrect = false, QuestionId = 26},
+
+                new Answer { Description = "ეროვნული ბანკის მიერ გამოშვებული ციფრული ლარი", IsCorrect = false, QuestionId = 27},
+                new Answer { Description = "კრიპტოვალუტის გადამცვლელი", IsCorrect = true, QuestionId = 27},
+                new Answer { Description = "ნახევარი ბიტკოინი", IsCorrect = false, QuestionId = 27},
+
+                new Answer { Description = "სწორი", IsCorrect = false, QuestionId = 28},
+                new Answer { Description = "არასწორია", IsCorrect = true, QuestionId = 28},
+                new Answer { Description = "შეუძლიათ მხოლოს 50 ტრანზაქციამდე", IsCorrect = false, QuestionId = 28},
+
+                new Answer { Description = "სწორია", IsCorrect = false, QuestionId = 29},
+                new Answer { Description = "არასწორია", IsCorrect = false, QuestionId = 29},
+                new Answer { Description = "არავინ იცის რა დაემართება ბიტკოინის ფასს", IsCorrect = true, QuestionId = 29},
+
+                new Answer { Description = "სწორია", IsCorrect = true, QuestionId = 30},
+                new Answer { Description = "არასწორია", IsCorrect = false, QuestionId = 30},
+                new Answer { Description = "კრიპტოვალუტით გადახდა აკრძალულია", IsCorrect = false, QuestionId = 30},
+
+                new Answer { Description = "Non Fungible Toke", IsCorrect = true, QuestionId = 31},
+                new Answer { Description = "Natela,Fati,Tamari", IsCorrect = false, QuestionId = 31},
+                new Answer { Description = "Non Feeding Telephone", IsCorrect = false, QuestionId = 31},
+
+                new Answer { Description = "არასწორია", IsCorrect = true, QuestionId = 32},
+                new Answer { Description = "სწორია", IsCorrect = false, QuestionId = 32},
+                new Answer { Description = "სწორია მხოლოდ ამერიკის ბაზრისთვის", IsCorrect = false, QuestionId = 32},
+
+                new Answer { Description = "თითოეული ტოკენი უნიკალურია და მისი სხვა ტოკენით შეცვლა არ შეიძლება", IsCorrect = true, QuestionId = 33},
+                new Answer { Description = "შესაძლებელია ბიტკოინის გაყოფა", IsCorrect = false, QuestionId = 33},
+                new Answer { Description = "არაფრით", IsCorrect = false, QuestionId = 33},
+
+                new Answer { Description = "რიპლი", IsCorrect = false, QuestionId = 34},
+                new Answer { Description = "ეთერიუმი", IsCorrect = true, QuestionId = 34},
+                new Answer { Description = "ბიტკოინი", IsCorrect = false, QuestionId = 34},
+
+                new Answer { Description = "ERC-721", IsCorrect = false, QuestionId = 35},
+                new Answer { Description = "ERC -123", IsCorrect = true, QuestionId = 35},
+                new Answer { Description = "ERC – 1050", IsCorrect = false, QuestionId = 35},
+
+                new Answer { Description = "NFT-ით ვაჭრობას", IsCorrect = false, QuestionId = 36},
+                new Answer { Description = "NFT-ის საფულეზე გადატანას", IsCorrect = false, QuestionId = 36},
+                new Answer { Description = "ახალი NFT გამოცემას", IsCorrect = true, QuestionId = 36},
+
+                new Answer { Description = "როგორც ეთერიუმი", IsCorrect = false, QuestionId = 37},
+                new Answer { Description = "როგორც ბიტოკინი", IsCorrect = false, QuestionId = 37},
+                new Answer { Description = "როგორც არტი", IsCorrect = true, QuestionId = 37},
+
+                new Answer { Description = "საფულე", IsCorrect = true, QuestionId = 38},
+                new Answer { Description = "ცენტრალიზებული სერვერ", IsCorrect = false, QuestionId = 38},
+                new Answer { Description = "მეგობრის სახლი", IsCorrect = false, QuestionId = 38},
+
+                new Answer { Description = "კრიპტოვალუტა", IsCorrect = false, QuestionId = 39},
+                new Answer { Description = "NFT სავაჭრო პლატფორმა", IsCorrect = true, QuestionId = 39},
+                new Answer { Description = "NFT-ის ბიტკოინად გადაკეთების საშუალება", IsCorrect = false, QuestionId = 39},
+
+                new Answer { Description = "decentralized autonomous organization", IsCorrect = true, QuestionId = 40},
+                new Answer { Description = "digital asset operation", IsCorrect = false, QuestionId = 40},
+                new Answer { Description = "defined active omit", IsCorrect = false, QuestionId = 40},
+
+                new Answer { Description = "Merge", IsCorrect = true, QuestionId = 41},
+                new Answer { Description = "Server", IsCorrect = false, QuestionId = 41},
+                new Answer { Description = "DPBingeo", IsCorrect = false, QuestionId = 41},
+
+                new Answer { Description = "ყველაზე უსაფრთხოა", IsCorrect = false, QuestionId = 42},
+                new Answer { Description = "სარისკოა", IsCorrect = true, QuestionId = 42},
+                new Answer { Description = "უსაფრთხოა აშშ-ში", IsCorrect = false, QuestionId = 42},
+
+                new Answer { Description = "კი", IsCorrect = true, QuestionId = 43},
+                new Answer { Description = "არა", IsCorrect = false, QuestionId = 43},
+                new Answer { Description = "კი, თუ კაპიტალი აღემატება 50 000 ლარს", IsCorrect = false, QuestionId = 43},
+
+                new Answer { Description = "შესაძლებელია", IsCorrect = true, QuestionId = 44},
+                new Answer { Description = "შეუძლებელია", IsCorrect = false, QuestionId = 44},
+                new Answer { Description = "შესაძლებელია მხოლოდ ბაინანსზე", IsCorrect = false, QuestionId = 44},
+
+                new Answer { Description = "მეტავერსი", IsCorrect = false, QuestionId = 45},
+                new Answer { Description = "მოსახლეობა", IsCorrect = true, QuestionId = 45},
+                new Answer { Description = "გამომშვები", IsCorrect = false, QuestionId = 45},
+
+                new Answer { Description = "მხოლოდ ქაღალდის ბანკნოტები", IsCorrect = false, QuestionId = 46},
+                new Answer { Description = "საშუალება ნივთების და მომსახურების შესაძენად", IsCorrect = true, QuestionId = 46},
+                new Answer { Description = "მხოლოდ მონეტები", IsCorrect = false, QuestionId = 46},
+
+                new Answer { Description = "ბალიშის ქვეშ", IsCorrect = false, QuestionId = 47},
+                new Answer { Description = "სათამაშოების ყუთში", IsCorrect = false, QuestionId = 47},
+                new Answer { Description = "ბანკში ან საფულეში ", IsCorrect = true, QuestionId = 47},
+
+                new Answer { Description = "ფულის დახარჯვა ყველაფერზე, რაც გვინდა", IsCorrect = false, QuestionId = 48},
+                new Answer { Description = "ფულის გვერდზე გადადება მომავლისთვის", IsCorrect = true, QuestionId = 48},
+                new Answer { Description = "ფულის სხვებისთვის მიცემა", IsCorrect = false, QuestionId = 48},
+
+                new Answer { Description = "დიდი ჩანთა ფულისთვის", IsCorrect = false, QuestionId = 49},
+                new Answer { Description = "გეგმა, თუ როგორ დავხარჯოთ და დავზოგოთ ფული ", IsCorrect = true, QuestionId = 49},
+                new Answer { Description = "ბანკის სპეციალური ანგარიში", IsCorrect = false, QuestionId = 49},
+
+                new Answer { Description = "ასიდან ერთი ნაწილი", IsCorrect = true, QuestionId = 50},
+                new Answer { Description = "ფულის დაბრუნება", IsCorrect = false, QuestionId = 50},
+                new Answer { Description = "ბანკის თანამშრომელი", IsCorrect = false, QuestionId = 50},
+
+                new Answer { Description = "ფული, რომელსაც ვხარჯავთ", IsCorrect = false, QuestionId = 51},
+                new Answer { Description = "ფული, რომელსაც ვსესხულობთ", IsCorrect = false, QuestionId = 51},
+                new Answer { Description = "ფული, რომელსაც ვიღებთ სამუშაოს ან ბიზნესიდან", IsCorrect = true, QuestionId = 51},
+
+                new Answer { Description = "ფული, რომელსაც გვაძლევენ სესხად და უნდა დავაბრუნოთ", IsCorrect = true, QuestionId = 52},
+                new Answer { Description = "ფული, რომელსაც ვაგროვებთ", IsCorrect = false, QuestionId = 52},
+                new Answer { Description = "ფული, რომელსაც ვხარჯავთ მაღაზიაში", IsCorrect = false, QuestionId = 52},
+
+                new Answer { Description = "როცა ფასები იზრდება და ფულის ღირებულება მცირდება ", IsCorrect = true, QuestionId = 53},
+                new Answer { Description = "როცა ბანკი გვაძლევს მეტ ფულს", IsCorrect = false, QuestionId = 53},
+                new Answer { Description = "როცა ვყიდულობთ აქციებს", IsCorrect = false, QuestionId = 53},
+
+                new Answer { Description = "ადგილი, სადაც ვცვლით ძველ ნივთებს", IsCorrect = false, QuestionId = 54},
+                new Answer { Description = "ბაზარი, სადაც ვყიდულობთ და ვყიდით კომპანიების წილებს", IsCorrect = true, QuestionId = 54},
+                new Answer { Description = "ბანკის სპეციალური განყოფილება", IsCorrect = false, QuestionId = 54},
             };
 
             foreach (var answer in answers)
