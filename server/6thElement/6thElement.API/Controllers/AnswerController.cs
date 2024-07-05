@@ -8,6 +8,7 @@ namespace _6thElement.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize(Roles = "User")]
     public class AnswerController : ControllerBase
     {
         private readonly IAnswerService _service;
@@ -17,7 +18,6 @@ namespace _6thElement.API.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "User")]
         [HttpGet("checkAnswer/{id}")]
         public async Task<bool> CheckAnswerAsync(int id, CancellationToken cancellationToken)
         { 

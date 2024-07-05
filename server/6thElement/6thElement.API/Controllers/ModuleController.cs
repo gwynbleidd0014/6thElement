@@ -1,11 +1,13 @@
 ﻿using _6thElement.Application.Modules;
 using _6thElement.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _6thElement.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize(Roles = "User")]
     public class ModuleController : ControllerBase
     {
         private readonly IModuleService _service;
@@ -22,6 +24,7 @@ namespace _6thElement.API.Controllers
 
         }
 
+        [Authorize(Roles = "User")]
         [HttpGet("{id}")]
         public async Task<ModuleResponseModel> GetByIdAsync(int id, CancellationToken cancellationToken)
         {

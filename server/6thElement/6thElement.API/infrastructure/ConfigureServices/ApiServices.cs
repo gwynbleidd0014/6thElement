@@ -18,7 +18,6 @@ public static class ApiServices
 
     public static IServiceCollection AddDbContextAndIdentity(this IServiceCollection services, IConfiguration configuration, ServiceLifetime contextLifeTime = ServiceLifetime.Scoped)
     {
-
         services.AddDbContext<AppDbContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection")), contextLifetime: contextLifeTime);
         services.AddIdentity<User, Role>(opts =>
         {
