@@ -4,8 +4,10 @@ import { registerAction } from "@/lib/actions";
 import { UserInfo } from "@/types/user-type";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import fbIcon from "../../public/assets/icons/facebookIcon.png";
+import googleIcon from "../../public/assets/icons/google.png";
+import Image from "next/image";
 import { ChangeEvent, useState } from "react";
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
 
 const SignupComp = () => {
   const [userInfo, setUserInfo] = useState<UserInfo>({
@@ -21,6 +23,7 @@ const SignupComp = () => {
     email: "",
     password: "",
   });
+  const [errorMessage, setErrorMassage] = useState("");
 
   const router = useRouter();
 
@@ -62,12 +65,18 @@ const SignupComp = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateInputs()) {
-      await registerAction(userInfo);
-      router.push("/dashboard/learn");
-    } else {
-      console.log("Form is invalid. Fix errors and try again.");
+    try {
+      if (validateInputs()) {
+        await registerAction(userInfo);
+        setErrorMassage("");
+        router.push("/auth/login");
+      }
+    } catch (error) {
+      setErrorMassage("Form is invalid. Fix issues and try again.");
     }
+    setTimeout(() => {
+      setErrorMassage("");
+    }, 3000);
   };
 
   return (
@@ -81,6 +90,11 @@ const SignupComp = () => {
         </Link>
       </div>
       <section>
+        {errorMessage.length > 0 && (
+          <span className="p-2 text-white text-[20px] bg-red-600 rounded animate-fade-in-up items-center">
+            {errorMessage}
+          </span>
+        )}
         <div className="flex flex-col items-center p-6">
           <form
             className="w-[380px] flex flex-col gap-4"
@@ -147,11 +161,12 @@ const SignupComp = () => {
                 <span className="flex-grow block border-t-2 border-[#AFAFAF]"></span>
               </h2>
             </div>
-            <button className="flex gap-2 justify-center bg-white hover:bg-[#AFAFAF] duration-300 text-blue p-2 py-3 rounded-xl items-center text-center font-bold tracking-widest shadow-[0_6px_0] shadow-[#AFAFAF] w-full">
-              <FaFacebookF /> facebook
+            <button className="flex gap-2 justify-center bg-white hover:bg-[#AFAFAF] duration-300 text-blue-600 p-2 py-3 rounded-xl items-center text-center font-bold tracking-widest shadow-[0_6px_0] shadow-[#AFAFAF] w-full">
+              <Image src={fbIcon} alt="facebook icon" className="w-6 h-6" />{" "}
+              facebook
             </button>
-            <button className="flex gap-2 justify-center bg-white hover:bg-[#AFAFAF] duration-300 text-blue p-2 py-3 rounded-xl items-center text-center font-bold tracking-widest shadow-[0_6px_0] shadow-[#AFAFAF] w-full">
-              <FaGoogle />
+            <button className="flex gap-2 justify-center bg-white hover:bg-[#AFAFAF] duration-300 text-blue-600 p-2 py-3 rounded-xl items-center text-center font-bold tracking-widest shadow-[0_6px_0] shadow-[#AFAFAF] w-full">
+              <Image src={googleIcon} alt="Google icon" className="w-6 h-6" />
               Google
             </button>
             <div className="text-center text-[#AFAFAF] text-[14px]">

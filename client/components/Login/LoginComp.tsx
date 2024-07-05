@@ -1,18 +1,19 @@
 "use client";
 
 import { loginAction } from "@/lib/actions";
+import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-import { FaFacebookF } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
+import fbIcon from '../../public/assets/icons/facebookIcon.png'
+import googleIcon from '../../public/assets/icons/google.png'
+
 
 const LoginComp = () => {
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
-  const router = useRouter();
+  const [errorMessage, setErrorMassage] = useState("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,11 +24,14 @@ const LoginComp = () => {
     e.preventDefault();
     try {
       await loginAction(userInfo);
-      router.push("/dashboard/learn");
+      setErrorMassage("");
+      window.location.reload();
     } catch (error) {
-      console.log(error);
-      
+      setErrorMassage("Something went wrong!");
     }
+    setTimeout(() => {
+      setErrorMassage("");
+    }, 3000);
   };
   return (
     <main className="p-8">
@@ -40,6 +44,11 @@ const LoginComp = () => {
         </Link>
       </div>
       <section>
+        {errorMessage.length > 0 && (
+          <span className="p-2 text-white text-[20px] bg-red-600 rounded animate-fade-in-up items-center">
+            {errorMessage}
+          </span>
+        )}
         <div className="flex flex-col items-center p-6">
           <form
             className="w-[380px] flex flex-col gap-4"
@@ -79,11 +88,11 @@ const LoginComp = () => {
                 <span className="flex-grow block border-t-2 border-[#AFAFAF]"></span>
               </h2>
             </div>
-            <button className="flex gap-2 justify-center bg-white hover:bg-[#AFAFAF] duration-300 text-blue p-2 py-3 rounded-xl items-center text-center font-bold tracking-widest shadow-[0_6px_0] shadow-[#AFAFAF] w-full">
-              <FaFacebookF /> facebook
+            <button className="flex gap-2 justify-center bg-white hover:bg-[#AFAFAF] duration-300 text-blue-600 p-2 py-3 rounded-xl items-center text-center font-bold tracking-widest shadow-[0_6px_0] shadow-[#AFAFAF] w-full">
+              <Image src={fbIcon} alt="facebook icon" className="w-6 h-6"/> facebook
             </button>
-            <button className="flex gap-2 justify-center bg-white hover:bg-[#AFAFAF] duration-300 text-blue p-2 py-3 rounded-xl items-center text-center font-bold tracking-widest shadow-[0_6px_0] shadow-[#AFAFAF] w-full">
-              <FaGoogle />
+            <button className="flex gap-2 justify-center bg-white hover:bg-[#AFAFAF] duration-300 text-blue-600 p-2 py-3 rounded-xl items-center text-center font-bold tracking-widest shadow-[0_6px_0] shadow-[#AFAFAF] w-full">
+            <Image src={googleIcon} alt="Google icon" className="w-6 h-6"/>
               Google
             </button>
             <div className="text-center text-[#AFAFAF] text-[14px]">
