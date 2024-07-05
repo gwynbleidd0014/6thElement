@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import nft1 from "../../../public/assets/nft/nft1.PNG";
-import nft2 from "../../../public/assets/nft/nft2.PNG";
-import nft3 from "../../../public/assets/nft/nft3.PNG";
-import nft4 from "../../../public/assets/nft/nft4.PNG";
-import nft5 from "../../../public/assets/nft/nft5.PNG";
+import nft1 from "../../../public/assets/nft/nft1.png";
+import nft2 from "../../../public/assets/nft/nft2.png";
+import nft3 from "../../../public/assets/nft/nft3.png";
+import nft4 from "../../../public/assets/nft/nft4.png";
+import nft5 from "../../../public/assets/nft/nft5.png";
 import coin from '../../../public/assets/icons/coin.svg'
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
