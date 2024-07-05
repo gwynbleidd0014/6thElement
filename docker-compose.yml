@@ -12,6 +12,8 @@ services:
     environment:
       - ConnectionStrings__DefaultConnection=Server=db;Database=SixthElement;User=sa;Password=6thElement;TrustServerCertificate=True;
       - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./server/6thElement/Images:/app/Images
     networks:
       - app-network
 
@@ -34,3 +36,4 @@ networks:
 
 volumes:
   sqldata:
+  images_volume:

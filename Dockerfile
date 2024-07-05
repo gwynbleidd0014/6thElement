@@ -11,6 +11,7 @@ COPY ["server/6thElement/6thElement.Application/6thElement.Application.csproj", 
 COPY ["server/6thElement/6thElement.Domain/6thElement.Domain.csproj", "6thElement.Domain/"]
 COPY ["server/6thElement/6thElement.Infrastructure/6thElement.Infrastructure.csproj", "6thElement.Infrastructure/"]
 COPY ["server/6thElement/6thElement.Persistance/6thElement.Persistance.csproj", "6thElement.Persistance/"]
+COPY ["server/6thElement/Images", "/app/Images"]
 RUN dotnet restore "6thElement.API/6thElement.API.csproj"
 COPY server/6thElement .
 WORKDIR "/src/6thElement.API"
