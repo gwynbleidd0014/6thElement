@@ -19,13 +19,6 @@ public static class ConfigureMiddleware
 
         builder.UseStaticFiles(new StaticFileOptions
         {
-            OnPrepareResponse = (context) =>
-            {
-                if (!context.Context.User.Identity.IsAuthenticated && context.Context.Request.Path.StartsWithSegments(RequestPath))
-                {
-                    throw new Exception("Not authenticated");
-                }
-            },
             FileProvider = new PhysicalFileProvider(config.GetValue<string>("Constants:UploadsFolderPath")),
             RequestPath = RequestPath
         });
