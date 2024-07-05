@@ -1,5 +1,4 @@
-﻿using _6thElement.API.infrastructure.JwtAuth;
-using _6thElement.Application.Accounts;
+﻿using _6thElement.Application.Accounts;
 using _6thElement.Application.Answers;
 using _6thElement.Application.Chapters;
 using _6thElement.Application.Modules;
@@ -7,7 +6,6 @@ using _6thElement.Application.Questions;
 using _6thElement.Domain.Users;
 using _6thElement.Infrastructure;
 using _6thElement.Persistance.DbContext;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
